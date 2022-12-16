@@ -11,7 +11,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
 <link href='http://fonts.googleapis.com/css?family=Playfair+Display+SC:400,700italic,900,900italic' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Cantata+One' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="./style.css">
 <style media="screen">
   .container {
     height: 100%;
@@ -21,7 +21,46 @@
 <script src="http://code.jquery.com/jquery-1.9.0.js"></script>
 <script type="text/javascript">
 
+$(function(){
 
+})
+
+function loadContent(htmlName) {
+  $(".wrapper").load(htmlName);
+  $(".wrapper").animate({ scrollTop: 0 }, "fast");
+}
+
+var zoomStep=0;
+function zoomInImage() {
+  if(zoomStep < 1) {
+    zoomStep +=1;
+
+    zoomLevel(zoomStep);
+  }
+}
+
+function zoomOutImage() {
+  if (zoomStep > -2) {
+    zoomStep -=1;
+    zoomLevel(zoomStep);
+  }
+}
+
+function zoomLevel(step) {
+
+  var scaleVal = "";
+  if (step == 0) {
+    scaleVal = "scale(1,1)";
+  } else if(step == 1){
+    scaleVal = "scale(1.2,1.2)";
+  }else if(step == -1) {
+    scaleVal = "scale(.8,.8)";
+  }else if(step == -2) {
+    scaleVal = "scale(.65,.65)";
+  }
+
+  $(".container").css("transform", scaleVal);
+}
 
 </script>
 <title>KIM JUNG MAN</title>
@@ -140,7 +179,5 @@
 
 </div>
 
-
-<script  src="script.js"></script>
 </body>
 </html>
